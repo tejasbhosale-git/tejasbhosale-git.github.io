@@ -31,6 +31,9 @@ const Navbar = () => {
           <Link to="skills" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
             Skills
           </Link>
+          <Link to="resume" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
+            Resume
+          </Link>
           <Link to="contact" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
             Contact
           </Link>
@@ -38,13 +41,13 @@ const Navbar = () => {
 
         {/* Social Icons */}
         <div className="hidden md:flex space-x-4">
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
+          <a href="https://www.linkedin.com/in/tejas-bhosale-b7b95a227/" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
             <span className="text-xl">🔗</span>
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
+          <a href="https://github.com/tejasbhosale-git" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
             <span className="text-xl">🐙</span>
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
+          <a href="https://x.com/tejasbhosale07" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
             <span className="text-xl">🐦</span>
           </a>
         </div>
@@ -52,7 +55,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={( ) => setIsOpen(!isOpen)}
             className="text-text-primary focus:outline-none"
           >
             <svg
@@ -66,7 +69,7 @@ const Navbar = () => {
                   clipRule="evenodd"
                   d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
                 />
-              ) : (
+               ) : (
                 <path
                   fillRule="evenodd"
                   d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
@@ -127,6 +130,15 @@ const Navbar = () => {
               Skills
             </Link>
             <Link
+              to="resume"
+              smooth={true}
+              duration={500}
+              className="block px-3 py-2 text-text-primary hover:text-accent transition-colors cursor-pointer"
+              onClick={() => setIsOpen(false)}
+            >
+              Resume
+            </Link>
+            <Link
               to="contact"
               smooth={true}
               duration={500}
@@ -136,19 +148,19 @@ const Navbar = () => {
               Contact
             </Link>
             <div className="flex space-x-4 px-3 py-2">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
+              <a href="https://www.linkedin.com/in/tejas-bhosale-b7b95a227/" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
                 <span className="text-xl">🔗</span>
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
+              <a href="https://github.com/tejasbhosale-git" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
                 <span className="text-xl">🐙</span>
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
+              <a href="https://x.com/tejasbhosale07" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
                 <span className="text-xl">🐦</span>
               </a>
             </div>
           </div>
         </div>
-      )}
+       )}
     </nav>
   );
 };
