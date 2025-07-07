@@ -64,13 +64,13 @@ const Contact = () => {
             <div className="mt-8">
               <h4 className="font-semibold mb-4 text-text-primary">Connect with me</h4>
               <div className="flex space-x-4">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-secondary/10 rounded-full text-accent hover:bg-secondary/20 transition-colors">
+                <a href="https://www.linkedin.com/in/tejas-bhosale-b7b95a227/" target="_blank" rel="noopener noreferrer" className="p-3 bg-secondary/10 rounded-full text-accent hover:bg-secondary/20 transition-colors">
                   <span className="text-xl">🔗</span>
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-secondary/10 rounded-full text-accent hover:bg-secondary/20 transition-colors">
+                <a href="https://github.com/tejasbhosale-git" target="_blank" rel="noopener noreferrer" className="p-3 bg-secondary/10 rounded-full text-accent hover:bg-secondary/20 transition-colors">
                   <span className="text-xl">🐙</span>
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-secondary/10 rounded-full text-accent hover:bg-secondary/20 transition-colors">
+                <a href="https://x.com/tejasbhosale07" target="_blank" rel="noopener noreferrer" className="p-3 bg-secondary/10 rounded-full text-accent hover:bg-secondary/20 transition-colors">
                   <span className="text-xl">🐦</span>
                 </a>
               </div>
