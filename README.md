@@ -1,1 +1,1 @@
-This is My personal Website , all rights reserved to @tejasbhosale
+This is My Portfolio Website , all rights reserved to @tejasbhosale
