@@ -3,32 +3,30 @@ import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="bg-primary-900 py-8 border-t border-secondary/20">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-text-secondary text-center md:text-left">
-              © {new Date().getFullYear()} Tejas Bhosale. All rights reserved.
-            </p>
-          </motion.div>
+    <footer className="bg-white py-8 border-t border-gray-200">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row justify-between items-center"
+        >
+          <div className="flex items-center space-x-4 mb-4 md:mb-0">
+            <div className="text-black text-2xl font-mono">
+              india-flag
+            </div>
+            <span className="text-gray-600 font-mono text-sm">
+              INDIA
+            </span>
+          </div>
           
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mt-4 md:mt-0"
-          >
-            <p className="text-text-secondary text-center md:text-right">
-              Designed and built with <span className="text-accent">❤</span>
+          <div className="text-center md:text-right">
+            <p className="text-gray-600 font-mono text-sm">
+              © 2025 TEJAS BHOSALE
             </p>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </footer>
   );

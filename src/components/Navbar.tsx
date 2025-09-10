@@ -1,62 +1,81 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
+  const sections = [
+    { id: 'home', name: 'Home' },
+    { id: 'about', name: 'About' },
+    { id: 'research', name: 'Research' },
+    { id: 'projects', name: 'Projects' },
+    { id: 'skills', name: 'Skills' },
+    { id: 'resume', name: 'Resume' },
+    { id: 'contact', name: 'Contact' }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i].id);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i].id);
+          break;
+        }
+      }
+    };
+
+    // Set initial active section
+    handleScroll();
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed w-full bg-primary/90 backdrop-blur-sm z-50 shadow-lg">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="flex items-center">
+    <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-200">
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-6xl">
+        <div className="flex items-center space-x-4">
+          <div className="w-10 h-10 flex items-center justify-center cursor-pointer group">
+            <div className="w-8 h-8 bg-black flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="w-2 h-3 bg-white rounded-full ml-1"></div>
+              <div className="w-2 h-4 bg-white rounded-full ml-1"></div>
+            </div>
+          </div>
           <Link to="home" smooth={true} duration={500} className="cursor-pointer">
-            <h1 className="text-2xl font-montserrat font-bold gradient-text">Tejas Bhosale</h1>
+            {/* Space for the animated title from Hero component */}
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6">
-          <Link to="home" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
-            Home
-          </Link>
-          <Link to="about" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
-            About
-          </Link>
-          <Link to="research" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
-            Research
-          </Link>
-          <Link to="projects" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
-            Projects
-          </Link>
-          <Link to="skills" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
-            Skills
-          </Link>
-          <Link to="resume" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
-            Resume
-          </Link>
-          <Link to="contact" smooth={true} duration={500} className="text-text-primary hover:text-accent transition-colors cursor-pointer">
-            Contact
-          </Link>
-        </div>
-
-        {/* Social Icons */}
-        <div className="hidden md:flex space-x-4">
-          <a href="https://www.linkedin.com/in/tejas-bhosale-b7b95a227/" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
-            <span className="text-xl">🔗</span>
-          </a>
-          <a href="https://github.com/tejasbhosale-git" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
-            <span className="text-xl">🐙</span>
-          </a>
-          <a href="https://x.com/tejasbhosale07" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
-            <span className="text-xl">🐦</span>
-          </a>
+        <div className="hidden md:flex space-x-8">
+          {sections.slice(1).map((section) => (
+            <Link
+              key={section.id}
+              to={section.id}
+              smooth={true}
+              duration={500}
+              className={`relative text-gray-600 hover:text-gray-900 transition-colors cursor-pointer py-2 px-3 font-medium ${
+                activeSection === section.id ? 'text-black' : ''
+              }`}
+            >
+              {section.name}
+              {activeSection === section.id && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black transition-all duration-300"></div>
+              )}
+            </Link>
+          ))}
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
-            onClick={( ) => setIsOpen(!isOpen)}
-            className="text-text-primary focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-gray-600 focus:outline-none"
           >
             <svg
               className="h-6 w-6 fill-current"
@@ -82,82 +101,24 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-primary/95 backdrop-blur-sm">
-          <div className="px-2 pt-2 pb-4 space-y-3">
-            <Link
-              to="home"
-              smooth={true}
-              duration={500}
-              className="block px-3 py-2 text-text-primary hover:text-accent transition-colors cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              to="about"
-              smooth={true}
-              duration={500}
-              className="block px-3 py-2 text-text-primary hover:text-accent transition-colors cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              to="research"
-              smooth={true}
-              duration={500}
-              className="block px-3 py-2 text-text-primary hover:text-accent transition-colors cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            >
-              Research
-            </Link>
-            <Link
-              to="projects"
-              smooth={true}
-              duration={500}
-              className="block px-3 py-2 text-text-primary hover:text-accent transition-colors cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            >
-              Projects
-            </Link>
-            <Link
-              to="skills"
-              smooth={true}
-              duration={500}
-              className="block px-3 py-2 text-text-primary hover:text-accent transition-colors cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            >
-              Skills
-            </Link>
-            <Link
-              to="resume"
-              smooth={true}
-              duration={500}
-              className="block px-3 py-2 text-text-primary hover:text-accent transition-colors cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            >
-              Resume
-            </Link>
-            <Link
-              to="contact"
-              smooth={true}
-              duration={500}
-              className="block px-3 py-2 text-text-primary hover:text-accent transition-colors cursor-pointer"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </Link>
-            <div className="flex space-x-4 px-3 py-2">
-              <a href="https://www.linkedin.com/in/tejas-bhosale-b7b95a227/" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
-                <span className="text-xl">🔗</span>
-              </a>
-              <a href="https://github.com/tejasbhosale-git" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
-                <span className="text-xl">🐙</span>
-              </a>
-              <a href="https://x.com/tejasbhosale07" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-accent transition-colors">
-                <span className="text-xl">🐦</span>
-              </a>
-            </div>
+        <div className="md:hidden bg-white border-b border-gray-200">
+          <div className="px-4 pt-2 pb-4 space-y-2">
+            {sections.slice(1).map((section) => (
+              <Link
+                key={section.id}
+                to={section.id}
+                smooth={true}
+                duration={500}
+                className={`block px-3 py-2 transition-colors cursor-pointer rounded-md ${
+                  activeSection === section.id
+                    ? 'text-black bg-gray-100 font-medium'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                {section.name}
+              </Link>
+            ))}
           </div>
         </div>
        )}
